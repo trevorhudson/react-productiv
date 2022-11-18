@@ -18,9 +18,9 @@ function TodoForm({ initialFormData, handleSave }) {
 
   /** Update form input. */
   function handleChange(evt) {
-    console.log("handleChange", evt);
-    const { name, value } = evt.target;
 
+    const { name, value } = evt.target;
+    console.log()
     setFormData(fData => ({
       ...fData,
       [name]: value,
@@ -71,7 +71,7 @@ function TodoForm({ initialFormData, handleSave }) {
             value={formData.priority}
             onChange={handleChange}
             className="form-control form-control-sm d-inline-flex"
-          >
+           type="number">
             <option value={1}>Ultra-Über</option>
             <option value={2}>Über</option>
             <option value={3}>Meh</option>

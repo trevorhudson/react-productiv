@@ -1,4 +1,4 @@
-import { render,fireEvent,getByLabelText } from "@testing-library/react";
+import { render,fireEvent,getByLabelText, queryByText } from "@testing-library/react";
 import Todo from './Todo.js';
 import TodoForm from './TodoForm.js';
 import ToDoApp from './ToDoApp.js';
@@ -23,15 +23,28 @@ describe("TodoForm component test" , function() {
     expect(container).toMatchSnapshot();
   });
 
-  it("updates on handleChange", function() {
-    const { container } = render(
-      <TodoForm
-      initialFormData={initialFormData}
-      handleSave={ToDoApp.handleSave}/>);
-      console.log("getbylabeltext",getByLabelText("title"))
-      debug(getByLabelText("title"))
-    fireEvent.change(getByLabelText("title"),{target:{value:"newTitle"}});
-    expect(container.getByLabelText("title")).toContainHTML("newTitle")
-  })
+  // it("updates on submitButton", function() {
+  //   const { container } = render(
+  //     <TodoForm
+  //     initialFormData={initialFormData}
+  //     handleSave={ToDoApp.handleSave}/>);
+
+  //   const submitButton = container.querySelector(".NewTodoForm-addBtn");
+  //   fireEvent.click(submitButton);
+  //   // expect.assertions(1);
+  //   expect()
+  // })
+  // it("updates per change", function() {
+  //   const { container } = render(
+  //     <TodoForm
+  //     initialFormData={initialFormData}
+  //     handleSave={ToDoApp.handleSave}/>);
+
+  //     const inputField = container.querySelector("#newTodo-description");
+  //     fireEvent.change(inputField,{target:{value:"test123"}})
+
+  //     expect(container.queryByText("test123")).toBeInTheDocument();
+
+  // })
 
 })

@@ -20,6 +20,7 @@ function TodoApp({ initialTodos }) {
 
   /** add a new todo to list */
   function create(newTodo) {
+    console.log("create",newTodo)
     const todo = { ...newTodo, id: uuid() };
     setTodos(todos => [...todos, todo]);
 
@@ -66,7 +67,7 @@ function TodoApp({ initialTodos }) {
                 {
                   title: "",
                   description: "",
-                  priority: "1"
+                  priority: "1",
                 }} />}
           </section>
 
