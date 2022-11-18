@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopTodo Component tests passes snapshot test 1`] = `
+<div>
+  <div
+    class="Todo"
+  >
+    <div>
+      <b>
+        todo2
+      </b>
+       
+      <small>
+        1
+      </small>
+    </div>
+    <div>
+      <small>
+        desc2
+      </small>
+    </div>
+  </div>
+</div>
+`;
