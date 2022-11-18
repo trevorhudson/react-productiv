@@ -5,23 +5,24 @@ import TodoForm from "./TodoForm";
 /** Show editable todo item.
  *
  * Props
- * - todo
+ * - todo: like { id, title, description, priority }
  * - update(): fn to call to update a todo
  * - remove(): fn to call to remove a todo
  *
  * State
- * - editable (true/false)
+ * - isEditing (true/false)
+ *
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
 function EditableTodo({ todo, update, remove }) {
   console.log('EditableTodo>>', todo);
   // editable state
-  const [editable, setEditable] = useState(false);
+  const [isEditing, setisEditing] = useState(false);
 
   /** Toggle if this is being edited */
   function toggleEdit() {
-    setEditable(editable === true ? false : true);
+    setisEditing(isEditing === true ? false : true);
   }
 
   /** Call remove fn passed to this. */
@@ -31,19 +32,19 @@ function EditableTodo({ todo, update, remove }) {
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) {
-    const updatedToDo = {...todo, ...formData};
-    console.log("handleSave",formData);
+    const updatedToDo = { ...todo, ...formData };
+    console.log("handleSave", formData);
     console.log("toDo", todo);
     toggleEdit();
-    update(formData,todo);
+    update(updatedToDo);
   }
 
 
   return (
     <div className="EditableTodo">
-      {(editable) && <TodoForm handleSave={handleSave} initialFormData={todo}/>}
+      {(isEditing) && <TodoForm handleSave={handleSave} initialFormData={todo} />}
 
-      {(!editable) && <div className="mb-3">
+      {(!isEditing) && <div className="mb-3">
         <div className="float-end text-sm-end">
           <button
             className="EditableTodo-toggle btn-link btn btn-sm"

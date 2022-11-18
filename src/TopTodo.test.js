@@ -3,7 +3,6 @@ import { render } from "@testing-library/react";
 import Todo from './Todo.js';
 import TopTodo from './TopTodo.js';
 
-
 describe('TopTodo Component tests', function () {
   const todos = [
     {
@@ -16,6 +15,12 @@ describe('TopTodo Component tests', function () {
       id: 2,
       title: 'todo2',
       description: 'desc2',
+      priority: 1
+    },
+    {
+      id: 3,
+      title: 'todo3',
+      description: 'desc3',
       priority: 1
     }
   ];
@@ -30,12 +35,12 @@ describe('TopTodo Component tests', function () {
   });
 
   it('expects single todo', function () {
-    const { container, debug } = render(<TopTodo todos={todos} />);
+    const { container } = render(<TopTodo todos={todos} />);
     expect(container.querySelectorAll('.Todo').length).toBe(1);
   });
 
   it('expects highest priority todo', function () {
-    const { container, debug } = render(<TopTodo todos={todos} />);
+    const { container } = render(<TopTodo todos={todos} />);
     expect(container.querySelector('.Todo')).toContainHTML('todo2');
   });
 });

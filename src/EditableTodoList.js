@@ -4,7 +4,7 @@ import EditableTodo from "./EditableTodo";
 /** Show list of editable todos.
  *
  * Props:
- * - todos: array of [ todo, ... ]
+ * - todos: array of [ {id, title, description, priority}, ... ]
  * - update(): fn to call to update a todo
  * - remove(): fn to call to remove a todo
  *
