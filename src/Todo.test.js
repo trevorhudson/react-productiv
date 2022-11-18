@@ -16,8 +16,7 @@ describe('Todo Component tests', function () {
 
   it('passes snapshot test', function () {
     const { container } = render(<Todo todo={testTodo} />);
-    expect(container).toMatchSnapshot();
-
+    expect(container).toMatchSnapshot()
   });
-
+  
 });
