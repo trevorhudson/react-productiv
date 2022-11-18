@@ -40,8 +40,15 @@ function TodoApp({ initialTodos }) {
       <div className="row">
 
         <div className="col-md-6">
-          <EditableTodoList todos={todos} update={update} remove={remove} />
-          {todos.length === 0 && <span className="text-muted">You have no todos.</span>}
+          <h3 className="mb-3">Todos</h3>
+          <div className="col-md-6">
+            <EditableTodoList
+              todos={todos}
+              update={update}
+              remove={remove} />
+            {todos.length === 0 &&
+              <span className="text-muted">You have no todos.</span>}
+          </div>
         </div>
 
         <div className="col-md-6">
@@ -55,10 +62,15 @@ function TodoApp({ initialTodos }) {
             <h3 className="mb-3">Add Nü</h3>
             {<TodoForm
               handleSave={create}
-              initialFormData={{ title: "", description: "", priority: "1" }} />}
+              initialFormData={
+                {
+                  title: "",
+                  description: "",
+                  priority: "1"
+                }} />}
           </section>
-        </div>
 
+        </div>
       </div>
     </main>
   );

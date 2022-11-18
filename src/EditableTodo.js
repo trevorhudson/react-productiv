@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
+
 /** Show editable todo item.
  *
  * Props
@@ -22,7 +23,7 @@ function EditableTodo({ todo, update, remove }) {
 
   /** Toggle if this is being edited */
   function toggleEdit() {
-    setisEditing(isEditing === true ? false : true);
+    setisEditing(setisEditing => setisEditing ? false : true);
   }
 
   /** Call remove fn passed to this. */
@@ -32,9 +33,9 @@ function EditableTodo({ todo, update, remove }) {
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) {
-    const updatedToDo = { ...todo, ...formData };
     console.log("handleSave", formData);
     console.log("toDo", todo);
+    const updatedToDo = { ...todo, ...formData };
     toggleEdit();
     update(updatedToDo);
   }
