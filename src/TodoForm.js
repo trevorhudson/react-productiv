@@ -6,16 +6,20 @@ import React, { useState } from "react";
  * Props:
  * - initialFormData
  * - handleSave: function to call in parent.
- *
+ * State
+ * - formData
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
 function TodoForm({ initialFormData, handleSave }) {
   const [formData, setFormData] = useState(initialFormData);
+  console.log("TodoForm",formData)
 
   /** Update form input. */
   function handleChange(evt) {
+    console.log("handleChange",evt)
     const { name, value } = evt.target;
+    
     setFormData(fData => ({
       ...fData,
       [name]: value,
@@ -39,7 +43,7 @@ function TodoForm({ initialFormData, handleSave }) {
           className="form-control"
           placeholder="Title"
           onChange={handleChange}
-          value=""
+          value={formData.title}
           aria-label="Title"
         />
       </div>
@@ -51,7 +55,7 @@ function TodoForm({ initialFormData, handleSave }) {
           className="form-control"
           placeholder="Description"
           onChange={handleChange}
-          value=""
+          value={formData.description}
           aria-label="Description"
         />
       </div>
@@ -63,7 +67,7 @@ function TodoForm({ initialFormData, handleSave }) {
           </label>
           <select id="newTodo-priority"
             name="priority"
-            value=""
+            value={formData.priority}
             onChange={handleChange}
             className="form-control form-control-sm d-inline-flex"
           >

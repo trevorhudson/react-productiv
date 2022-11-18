@@ -9,6 +9,8 @@ import TodoForm from "./TodoForm";
  * - update(): fn to call to update a todo
  * - remove(): fn to call to remove a todo
  *
+ * State
+ * - editable (true/false)
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
@@ -29,13 +31,17 @@ function EditableTodo({ todo, update, remove }) {
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) {
+    const updatedToDo = {...todo, ...formData};
+    console.log("handleSave",formData);
+    console.log("toDo", todo);
     toggleEdit();
-    update(formData);
+    update(formData,todo);
   }
+
 
   return (
     <div className="EditableTodo">
-      {(editable) && <TodoForm handleSave={handleSave} />}
+      {(editable) && <TodoForm handleSave={handleSave} initialFormData={todo}/>}
 
       {(!editable) && <div className="mb-3">
         <div className="float-end text-sm-end">
