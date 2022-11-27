@@ -17,7 +17,6 @@ import TodoForm from "./TodoForm";
  */
 
 function EditableTodo({ todo, update, remove }) {
-  console.log('EditableTodo>>', todo);
   // editable state
   const [isEditing, setisEditing] = useState(false);
 
@@ -33,8 +32,6 @@ function EditableTodo({ todo, update, remove }) {
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) {
-    console.log("handleSave", formData);
-    console.log("toDo", todo);
     const updatedToDo = { ...todo, ...formData };
     toggleEdit();
     update(updatedToDo);

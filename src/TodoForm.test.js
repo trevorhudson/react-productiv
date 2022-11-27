@@ -23,11 +23,20 @@ describe("TodoForm component test" , function() {
     expect(container).toMatchSnapshot();
   });
 
+  it("submit button works", function() {
+    const saveMock = jest.fn();
+    saveMock.mockClear();
+    const { container } = render(
+      <TodoForm
+      initialFormData={initialFormData}
+      handleSave={saveMock}/>);
+    const submitBtn = container.querySelector(".NewTodoForm");
+    fireEvent.click(submitBtn);
+    expect(container.querySelector(".NewTodoForm")).toBeInTheDocument();
+  })
+
   // it("updates on submitButton", function() {
-  //   const { container } = render(
-  //     <TodoForm
-  //     initialFormData={initialFormData}
-  //     handleSave={ToDoApp.handleSave}/>);
+
 
   //   const submitButton = container.querySelector(".NewTodoForm-addBtn");
   //   fireEvent.click(submitButton);

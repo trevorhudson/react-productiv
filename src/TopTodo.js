@@ -11,7 +11,7 @@ import Todo from "./Todo";
  */
 
 function TopTodo({ todos }) {
-  console.log("TopTodo", todos);
+
   // lowest-priority # is the highest priority
   let top = todos.reduce(
     (acc, cur) => Number(cur.priority) < acc.priority ? cur : acc, todos[0]);

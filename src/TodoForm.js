@@ -14,7 +14,7 @@ import React, { useState } from "react";
 
 function TodoForm({ initialFormData, handleSave }) {
   const [formData, setFormData] = useState(initialFormData);
-  console.log("TodoForm", formData);
+
 
   /** Update form input. */
   function handleChange(evt) {
