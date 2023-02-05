@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import ShowQuote from "./ShowQuote";
 
-interface Quote {
+interface QuoteInterface {
   text: string;
   author: string;
 }
@@ -20,11 +20,11 @@ interface Quote {
  */
 
 const GetQuote: React.FC = () =>{
-  const [currentQuote, setCurrentQuote] = useState<Quote | null>(null);
+  const [currentQuote, setCurrentQuote] = useState<QuoteInterface | null>(null);
 
   /** retrieve a random quote from quotes API */
-  async function randomQuote() {
-    const response = await axios.get<{quote: Quote}> ("https://inspo-quotes-api.herokuapp.com/quotes/random");
+  async function randomQuote(): Promise<void> {
+    const response = await axios.get<{quote: QuoteInterface}> ("https://inspo-quotes-api.herokuapp.com/quotes/random");
     const randomQuote = response.data.quote;
     setCurrentQuote(randomQuote);
   }

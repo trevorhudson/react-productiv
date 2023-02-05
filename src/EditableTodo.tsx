@@ -32,7 +32,7 @@ type PropsInterface = {
 
 const EditableTodo: React.FC<PropsInterface> = ({todo, update, remove}) => {
   // editable state
-  const [isEditing, setisEditing] = useState(false);
+  const [isEditing, setisEditing] = useState<boolean>(false);
 
   /** Toggle if this is being edited */
   function toggleEdit() {

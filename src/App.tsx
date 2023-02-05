@@ -10,7 +10,7 @@ import "./App.css";
  * App -> TodoApp
  **/
 
-function App() {
+const App:React.FC = () => {
   return (
       <main className="App">
         <header className="container-fluid pt-4 pb-1">

@@ -6,8 +6,6 @@ interface QuoteInterface {
   author: string;
 }
 
-
-
 interface PropsInterface {
   getQuote: () => void;
   currentQuote: QuoteInterface | null;

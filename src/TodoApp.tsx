@@ -31,7 +31,7 @@ interface PropsInterface {
 
 
 const TodoApp: React.FC<PropsInterface> = ({initialTodos}) =>{
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState<InitialToDosInterface[]>(initialTodos);
 
   /** add a new todo to list */
   function create(newTodo:InitialToDosInterface) {

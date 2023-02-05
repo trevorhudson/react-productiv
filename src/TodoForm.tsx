@@ -14,7 +14,7 @@ interface PropsInterface {
 }
 
 const TodoForm: React.FC<PropsInterface> = ({initialFormData, handleSave}) => {
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState<FormData>(initialFormData);
 
   /** Update form input. */
   function handleChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
