@@ -1,25 +1,28 @@
 import { render,fireEvent,getByLabelText, queryByText } from "@testing-library/react";
-import Todo from './Todo.js';
-import TodoForm from './TodoForm.js';
-import ToDoApp from './ToDoApp.js';
-
+import Todo from './Todo';
+import TodoForm from './TodoForm';
+import TodoApp from './TodoApp';
+import React from "react";
 
 describe("TodoForm component test" , function() {
   const initialFormData = {
+    id: "",
     title:"test",
     description:"test",
     priority: "1",
   }
 
+  const handleSave = () => {}
+
   it("renders", function() {
-    render(<TodoForm initialFormData={initialFormData} handleSave={ToDoApp.handleSave}/>)
+    render(<TodoForm initialFormData={initialFormData} handleSave={handleSave}/>)
   });
 
   it('passes snapshot test', function () {
     const { container } = render(
     <TodoForm
     initialFormData={initialFormData}
-    handleSave={ToDoApp.handleSave}/>);
+    handleSave={handleSave}/>);
     expect(container).toMatchSnapshot();
   });
 
@@ -30,7 +33,7 @@ describe("TodoForm component test" , function() {
       <TodoForm
       initialFormData={initialFormData}
       handleSave={saveMock}/>);
-    const submitBtn = container.querySelector(".NewTodoForm");
+    const submitBtn = container.querySelector(".NewTodoForm")!;
     fireEvent.click(submitBtn);
     expect(container.querySelector(".NewTodoForm")).toBeInTheDocument();
   })

@@ -1,10 +1,18 @@
 import "./ShowQuote.css";
 import React from "react"
 
-type PropsInterface = {
+interface QuoteInterface {
+  text: string;
+  author: string;
+}
+
+
+
+interface PropsInterface {
   getQuote: () => void;
-  currentQuote: (text:string) => void;
-};
+  currentQuote: QuoteInterface | null;
+}
+
 
 /** Shows a random current quote and displays button to get new quote
  *
@@ -15,7 +23,7 @@ type PropsInterface = {
  * No state
  */
 
-const showQuote: React.FC<PropsInterface> = ({ getQuote, currentQuote }) => {
+const ShowQuote: React.FC<PropsInterface> = ({ getQuote, currentQuote }) => {
   function initialQuote() {
     return (
       <div className="ShowQuote">
@@ -31,7 +39,7 @@ const showQuote: React.FC<PropsInterface> = ({ getQuote, currentQuote }) => {
       <div className="ShowQuote">
         <p className="Quote">
           <i>
-            {currentQuote.text} - {currentQuote.author}
+            {currentQuote!.text} - {currentQuote!.author}
           </i>
         </p>
         <button className="btn-QuoteDisplay-after" onClick={getQuote}>

@@ -1,6 +1,16 @@
 import React from "react";
-
 import Todo from "./Todo";
+
+interface TopToDoInterface {
+  id: string,
+  title: string,
+  description: string,
+  priority: string
+}
+
+interface PropsInterface {
+  todos: TopToDoInterface[]
+}
 
 /** Shows the top todo.
  *
@@ -10,11 +20,10 @@ import Todo from "./Todo";
  * TodoApp -> TopTodo
  */
 
-function TopTodo({ todos }) {
-
+const TopTodo: React.FC<PropsInterface>= ({todos}) =>{
   // lowest-priority # is the highest priority
   let top = todos.reduce(
-    (acc, cur) => Number(cur.priority) < acc.priority ? cur : acc, todos[0]);
+    (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
 
   return <Todo todo={top} />;
 }

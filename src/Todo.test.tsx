@@ -1,13 +1,14 @@
 import { render } from "@testing-library/react";
-import Todo from './Todo.js';
+import Todo from './Todo';
+import React from "react"
 
 
 describe('Todo Component tests', function () {
   const testTodo = {
-    id: 0,
+    id: "0",
     title: 'title',
     description: 'description',
-    priority: 1
+    priority:"1"
   };
 
   it('renders without crashing', function () {
@@ -18,5 +19,5 @@ describe('Todo Component tests', function () {
     const { container } = render(<Todo todo={testTodo} />);
     expect(container).toMatchSnapshot()
   });
-  
+
 });

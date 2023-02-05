@@ -46,7 +46,6 @@ exports[`TodoForm component test passes snapshot test 1`] = `
           class="form-control form-control-sm d-inline-flex"
           id="newTodo-priority"
           name="priority"
-          type="number"
         >
           <option
             value="1"

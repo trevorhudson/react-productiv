@@ -1,27 +1,28 @@
 
 import { render } from "@testing-library/react";
-import Todo from './Todo.js';
-import TopTodo from './TopTodo.js';
+import Todo from './Todo';
+import TopTodo from './TopTodo';
+import React from "react";
 
 describe('TopTodo Component tests', function () {
   const todos = [
     {
-      id: 1,
+      id: "1",
       title: 'todo1',
       description: 'desc1',
-      priority: 3
+      priority: "3"
     },
     {
-      id: 2,
+      id: "2",
       title: 'todo2',
       description: 'desc2',
-      priority: 1
+      priority: "1"
     },
     {
-      id: 3,
+      id: "3",
       title: 'todo3',
       description: 'desc3',
-      priority: 1
+      priority: "1"
     }
   ];
 

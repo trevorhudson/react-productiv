@@ -5,10 +5,10 @@ import React from 'react'
 describe("EditableToDoList component test", function() {
   const todos = [
     {
-      id: 1,
+      id: "1",
       title: 'todo1',
       description: 'desc1',
-      priority: 3
+      priority: "3"
     },
   ];
   it("renders", function() {

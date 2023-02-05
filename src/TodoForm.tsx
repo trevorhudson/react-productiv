@@ -1,34 +1,32 @@
 import React, { useState } from "react";
 
+interface FormData {
+  id: string,
+  title: string,
+  description: string,
+  priority: string
+}
 
-/** Form for adding.
- *
- * Props:
- * - initialFormData: {title, description, priority}
- * - handleSave(): function to call in parent.
- *
- * State
- * - formData: {title, description, priority}
- * { TodoApp, EditableTodo } -> TodoForm
- */
 
-function TodoForm({ initialFormData, handleSave }) {
+interface PropsInterface {
+  initialFormData: FormData;
+  handleSave: (formData: FormData) => void;
+}
+
+const TodoForm: React.FC<PropsInterface> = ({initialFormData, handleSave}) => {
   const [formData, setFormData] = useState(initialFormData);
 
-
   /** Update form input. */
-  function handleChange(evt) {
-
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = evt.target;
-    console.log()
     setFormData(fData => ({
       ...fData,
-      [name]: value,
+      [name]: name === "priority" ? parseInt(value) : value,
     }));
   }
 
   /** Call parent function and clear form. */
-  function handleSubmit(evt) {
+  function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     handleSave(formData);
     setFormData(initialFormData);
@@ -71,7 +69,7 @@ function TodoForm({ initialFormData, handleSave }) {
             value={formData.priority}
             onChange={handleChange}
             className="form-control form-control-sm d-inline-flex"
-           type="number">
+            >
             <option value={1}>Ultra-Über</option>
             <option value={2}>Über</option>
             <option value={3}>Meh</option>

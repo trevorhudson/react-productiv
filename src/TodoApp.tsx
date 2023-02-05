@@ -3,7 +3,21 @@ import { v4 as uuid } from "uuid";
 
 import TopTodo from "./TopTodo";
 import EditableTodoList from "./EditableTodoList";
-import TodoForm from "./TodoForm.js";
+import TodoForm from "./TodoForm";
+
+
+interface InitialToDosInterface {
+  id: string,
+  title: string,
+  description: string,
+  priority: string
+}
+
+interface PropsInterface {
+  initialTodos: InitialToDosInterface[];
+
+}
+
 /** App for managing a todo list.
  *
  * Props:
@@ -15,11 +29,12 @@ import TodoForm from "./TodoForm.js";
  * App -> TodoApp -> { TodoForm, EditableTodoList }
  */
 
-function TodoApp({ initialTodos }) {
+
+const TodoApp: React.FC<PropsInterface> = ({initialTodos}) =>{
   const [todos, setTodos] = useState(initialTodos);
 
   /** add a new todo to list */
-  function create(newTodo) {
+  function create(newTodo:InitialToDosInterface) {
 
     const todo = { ...newTodo, id: uuid() };
     setTodos(todos => [...todos, todo]);
@@ -27,12 +42,12 @@ function TodoApp({ initialTodos }) {
   }
 
   /** update a todo with updatedTodo */
-  function update(updatedTodo) {
+  function update(updatedTodo: InitialToDosInterface) {
     setTodos(todos => todos.map(t => t.id === updatedTodo.id ? updatedTodo : t));
   }
 
   /** delete a todo by id */
-  function remove(id) {
+  function remove(id: string) {
     setTodos(todos => todos.filter(t => t.id !== id));
   }
 
@@ -65,9 +80,10 @@ function TodoApp({ initialTodos }) {
               handleSave={create}
               initialFormData={
                 {
+                  id: "",
                   title: "",
                   description: "",
-                  priority: "1",
+                  priority: "",
                 }} />}
           </section>
 

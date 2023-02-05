@@ -3,17 +3,17 @@ import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
 type TodoInterface = {
-  id: number,
+  id: string,
   title: string,
   description: string,
-  priority: number
+  priority: string
 
 }
 
 type PropsInterface = {
   todo: TodoInterface,
   update: (todo: TodoInterface) => void,
-  remove: (id: number) => void
+  remove: (id: string) => void
 }
 
 
