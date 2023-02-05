@@ -11,9 +11,20 @@ import EditableTodo from "./EditableTodo";
  * TodoApp -> EditableTodoList -> [ EditableTodo, ... ]
  */
 
-function EditableTodoList({ todos, update, remove }) {
+type TodoInterface = {
+  id: number,
+  title: string,
+  description: string,
+  priority: number
+}
 
+type PropsInterface = {
+  todos: TodoInterface[],
+  update: (todo: TodoInterface) => void,
+  remove: (id: number) => void
+}
 
+const EditableTodoList: React.FC<PropsInterface> = ({todos, update, remove}) =>{
   return (
     <div>
       {todos.map(

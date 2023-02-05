@@ -2,6 +2,20 @@ import React, { useState } from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
+type TodoInterface = {
+  id: number,
+  title: string,
+  description: string,
+  priority: number
+
+}
+
+type PropsInterface = {
+  todo: TodoInterface,
+  update: (todo: TodoInterface) => void,
+  remove: (id: number) => void
+}
+
 
 /** Show editable todo item.
  *
@@ -16,7 +30,7 @@ import TodoForm from "./TodoForm";
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
-function EditableTodo({ todo, update, remove }) {
+const EditableTodo: React.FC<PropsInterface> = ({todo, update, remove}) => {
   // editable state
   const [isEditing, setisEditing] = useState(false);
 
@@ -31,7 +45,7 @@ function EditableTodo({ todo, update, remove }) {
   }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
-  function handleSave(formData) {
+  function handleSave(formData: TodoInterface) {
     const updatedToDo = { ...todo, ...formData };
     toggleEdit();
     update(updatedToDo);
